@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:10:12 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 05:59:03 by bamsyah          ###   ########.fr       */
+/*   Updated: 2024/03/15 18:39:59 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	save_textures(char **split_line, t_cub_pars *cub)
 		ft_putendl_free("Invalid Elements", 2, path);
 	if (check_xpm(path) == 1)
 		ft_putendl_free("Invalid Elements", 2, path);
-	free(path);
+	// free(path);
 }
 
 void	save_cardinal_direction(t_cub_pars *cub, char *line)
@@ -84,7 +84,7 @@ int	is_cardinal_direction(char *line)
 	trim_line = ft_strtrim(line, " ");
 	split_line = ft_split(trim_line, ' ');
 	free(trim_line);
-	if (!(ft_strlen(split_line[0]) != 2 && 
+	if (!(ft_strlen(split_line[0]) == 2 && 
 		((split_line[0][0] == 'N' && split_line[0][1] == 'O'
 		 && split_line[0][2] == '\0') || (split_line[0][0] == 'S'
 		 && split_line[0][1] == 'O' && split_line[0][2] == '\0')
@@ -93,7 +93,7 @@ int	is_cardinal_direction(char *line)
 		&& split_line[0][1] == 'A' && split_line[0][2] == '\0'))))
 	{
 		clean_map(split_line);
-		ft_putendl_fd("Invalid Elements", 2);
+		return (1);
 	}
 	clean_map(split_line);
 	return (0);

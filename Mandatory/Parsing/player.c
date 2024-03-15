@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 14:41:16 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 14:58:07 by bamsyah          ###   ########.fr       */
+/*   Updated: 2024/03/15 16:05:48 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+float	alpha(char c)
+{
+	if (c == 'N')
+		return (NO);
+	else if (c == 'S')
+		return (SO);
+	else if (c == 'E')
+		return (EA);
+	else
+		return (WE);
+}
 
 void	get_p_position(t_cub_pars *cub)
 {

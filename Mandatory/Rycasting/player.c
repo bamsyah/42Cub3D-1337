@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   clean.c                                            :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 17:14:58 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/14 17:15:58 by bamsyah          ###   ########.fr       */
+/*   Created: 2024/03/15 15:42:03 by bkaztaou          #+#    #+#             */
+/*   Updated: 2024/03/15 15:42:17 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	clean_map(char **file_split)
+void	player_init(t_cub_pars *cub3d)
 {
-	int	i;
-
-	i = 0;
-	if (!file_split)
-		return ;
-	while (file_split[i])
-	{
-		free(file_split[i]);
-		i++;
-	}
-	free(file_split);
+	cub3d->player.raduis = 0;
+	cub3d->player.turn_direction = 0;
+	cub3d->player.walk_direction = 0;
+	cub3d->player.walk_speed = 10.0;
+	cub3d->player.turn_speed = 4.0 * (M_PI / 180);
+	cub3d->player.step = 0;
+	cub3d->player.look = 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:15:13 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 15:01:13 by bamsyah          ###   ########.fr       */
+/*   Updated: 2024/03/15 16:39:56 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	has_map_conflicts(char **map)
 					|| (map[i][j - 1] && map[i][j - 1] == '$')
 					|| (map[i][j + 1] && map[i][j + 1] == '$')
 					|| (map[i + 1][j] && map[i + 1][j] == '$'))
-					ft_putchar_fd("Error Map Conflict", 2);
+					ft_putendl_fd("Error Map Conflict", 2);
 			}
 		}
 	}
@@ -43,7 +43,7 @@ void	check_newline(char *map)
 	i = -1;
 	while (map[++i])
 		if (map[i] == '\n' && map[i + 1] == '\n' )
-			ft_putchar_fd("Error Invalid Map", 2);
+			ft_putendl_fd("Error Invalid Map", 2);
 }
 
 void	is_map(char *line)
@@ -56,16 +56,6 @@ void	is_map(char *line)
 			ft_putendl_fd("Error Invalid Map", 2);
 }
 
-void	check_newline(char *map)
-{
-	int	i;
-
-	i = -1;
-	while (map[++i])
-		if (map[i] == '\n' && map[i + 1] == '\n' )
-			ft_putendl_fd("Error Invalid Map", 2);
-}
-
 void	check_map(t_cub_pars *cub)
 {
 	cub->map2d = ft_split(cub->map, '\n');
@@ -75,6 +65,6 @@ void	check_map(t_cub_pars *cub)
 	one_player(cub);
 	player_surrounded(cub);
 	rect_map(cub);
-	has_map_conflicts(cub);
+	has_map_conflicts(cub->map2d);
 	get_p_position(cub);
 }

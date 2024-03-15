@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 02:38:54 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 15:12:08 by bamsyah          ###   ########.fr       */
+/*   Updated: 2024/03/15 18:36:46 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ void	is_invalid_element(char *line)
 {
 	if (line[0] == '\n' && line[0] == '\0'
 		&& line[0] == '\t')
-		ft_putnbr_fd("Error Invalid Map", 2);
+		ft_putendl_fd("Error Invalid Map", 2);
 }
 
 void	save_map(t_cub_pars *cub, char *line)
 {
 	char	*copy;
-	char	*tmp;
 
 	is_invalid_element(line);
 	copy = ft_strdup(line);
@@ -39,9 +38,10 @@ void	save_map(t_cub_pars *cub, char *line)
 
 void	parse_elements(t_cub_pars *cub, char *line)
 {
-	if (is_cardinal_direction(line))
-		save_cardinal_direction(cub, line);
-	else if (line[0] == 'F' || line[0] == 'C')
+	if (is_cardinal_direction(line) == 1)
+		ft_putendl_fd("Invalid Elements --", 2);
+	save_cardinal_direction(cub, line);
+	if (line[0] == 'F' || line[0] == 'C')
 		save_rgb(cub, line);
 	else
 	{

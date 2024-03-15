@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:18:42 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 06:30:28 by bamsyah          ###   ########.fr       */
+/*   Updated: 2024/03/15 16:37:59 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	check_texture(t_cub_pars cub)
+int	check_texture_dir(t_cub_pars cub)
 {
 	if (!cub.directions.north)
 		return (1);
@@ -36,7 +36,7 @@ int	is_rgb(t_cub_pars cub)
 
 void	is_map_elements(t_cub_pars cub)
 {
-	if (check_texture(cub) == 1)
+	if (check_texture_dir(cub) == 1)
 		ft_putendl_fd("Error Invalid Map", 2);
 	if (is_rgb(cub) == 1)
 		ft_putendl_fd("Error Invalid Map", 2);
