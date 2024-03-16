@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 02:38:54 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 18:33:43 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 19:57:15 by bamsyah          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,6 @@ void	is_invalid_element(char *line)
 	if (line[0] == '\n' && line[0] == '\0'
 		&& line[0] == '\t')
 		ft_putendl_fd("Error Invalid Map", 2);
-}
-
-void	save_map(t_cub_pars *cub, char *line)
-{
-	char	*copy;
-
-	is_invalid_element(line);
-	copy = ft_strdup(line);
-	while (copy)
-	{
-		cub->map = ft_strjoin(cub->map, copy);
-		free(copy);
-		copy = get_next_line(cub->fd);
-	}
-	check_newline(cub->map);
-	check_map(cub);
-	check_newline(cub->map);
 }
 
 int	parse_elements(t_cub_pars *cub, char *line)
