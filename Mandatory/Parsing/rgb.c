@@ -6,7 +6,7 @@
 /*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 04:47:22 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 17:22:40 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:31:29 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void	save_rgb(t_cub_pars *cub, char *line)
 	if (rgbs[0][0] == 'F')
 	{
 		tmp = ft_split(rgbs[0], ' ');
+		free(rgbs[0]);
 		rgbs[0] = ft_strtrim(tmp[1], " ");
 		clean_map(tmp);
 		fill_rgbs(cub, rgbs, 'F');
@@ -117,6 +118,7 @@ void	save_rgb(t_cub_pars *cub, char *line)
 	if (rgbs[0][0] == 'C')
 	{
 		tmp = ft_split(rgbs[0], ' ');
+		free(rgbs[0]);
 		rgbs[0] = ft_strtrim(tmp[1], " ");
 		clean_map(tmp);
 		fill_rgbs(cub, rgbs, 'C');
