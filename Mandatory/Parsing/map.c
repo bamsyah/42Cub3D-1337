@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:15:13 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 03:58:00 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 04:38:24 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	is_map(char *line)
 	i = -1;
 	while (line[++i])
 		if (!(line[i] == '1' || line[i] == '0'
-			|| line[i] == 'N' || line[i] == 'S'
-			|| line[i] == 'W' || line[i] == 'E'
-			|| line[i] == ' '))
+				|| line[i] == 'N' || line[i] == 'S'
+				|| line[i] == 'W' || line[i] == 'E'
+				|| line[i] == ' '))
 			return (1);
 	return (0);
 }
@@ -63,7 +63,6 @@ int	is_map(char *line)
 void	check_map(t_cub_pars *cub)
 {
 	cub->map2d = ft_split(cub->map, '\n');
-
 	cub->map_init.x = ft_strlen(cub->map2d[0]);
 	cub->map_init.y = ft_file_len(cub->map2d);
 	is_surrounded(cub);

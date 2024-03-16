@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 02:38:54 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 03:18:21 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 04:41:57 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,15 @@ void	parse(t_cub_pars *cub)
 	{
 		line = get_next_line(cub->fd);
 		if (!line)
-			break;
+			break ;
 		if (line[0] == '\n')
 		{
 			free(line);
-			continue;
+			continue ;
 		}
 		if (parse_elements(cub, line))
 			ft_putendl_fd("Invalide Map", 2);
 		free(line);
 	}
-		check_map(cub);
+	check_map(cub);
 }

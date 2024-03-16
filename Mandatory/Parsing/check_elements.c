@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:10:12 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 23:32:55 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 04:39:03 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ int	is_cardinal_direction(char *line)
 	trim_line = ft_strtrim(line, " ");
 	split_line = ft_split(trim_line, ' ');
 	len = ft_file_len(split_line);
-
 	if (len == 2
 		&& ft_strlen(split_line[0]) == 2
 		&& ((split_line[0][0] == 'N' && split_line[0][1] == 'O') ||

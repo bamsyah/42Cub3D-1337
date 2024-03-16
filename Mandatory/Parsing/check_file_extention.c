@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:28:24 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 22:47:14 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 04:37:20 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_file_len(char **file_splite)
 
 int	check_file_extention(char *file_name)
 {
-    char	**file_split;
+	char	**file_split;
 	int		len;
 
 	file_split = ft_split(file_name, '.');

@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 04:47:22 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 01:41:30 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 04:39:25 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,10 @@ int	comma(char *line)
 
 void	save_rgb(t_cub_pars *cub, char *line)
 {
-	(void)cub;
 	char	*hex;
 	char	**rgbs;
 
+	(void)cub;
 	hex = ft_strtrim(line, " ");
 	if (comma(hex))
 		ft_putendl_free("Invalid Color", 2, hex);
