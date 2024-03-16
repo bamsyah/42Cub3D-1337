@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rgb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 04:47:22 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 10:01:00 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:22:40 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,14 +101,25 @@ void	save_rgb(t_cub_pars *cub, char *line)
 {
 	char	*hex;
 	char	**rgbs;
-	char	**color;
+	char	**tmp;
 
 	hex = ft_strtrim(line, " ");
 	if (comma(hex))
 		ft_putendl_free("Invalid Color", 2, hex);
-	color = ft_split(hex, ' ');
+	rgbs = ft_split(hex, ',');
+	if (rgbs[0][0] == 'F')
+	{
+		tmp = ft_split(rgbs[0], ' ');
+		rgbs[0] = ft_strtrim(tmp[1], " ");
+		clean_map(tmp);
+		fill_rgbs(cub, rgbs, 'F');
+	}
+	if (rgbs[0][0] == 'C')
+	{
+		tmp = ft_split(rgbs[0], ' ');
+		rgbs[0] = ft_strtrim(tmp[1], " ");
+		clean_map(tmp);
+		fill_rgbs(cub, rgbs, 'C');
+	}
 	free(hex);
-	rgbs = ft_split(color[1], ',');
-	fill_rgbs(cub, rgbs, color[0][0]);
-	clean_map(color);
 }

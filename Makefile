@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/28 13:09:52 by bamsyah           #+#    #+#              #
-#    Updated: 2024/03/15 16:16:59 by bkaztaou         ###   ########.fr        #
+#    Updated: 2024/03/16 16:58:01 by bkaztaou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = cub3d
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-FRAMEWORK = -L/usr/local/lib -lmlx -L/usr/lib -lXext -lm -lX11
+FRAMEWORK =  -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 
 SRC = cub3d.c Utils/libft/ft_calloc.c  Utils/libft/ft_isdigit.c Utils/libft/ft_memcmp.c  Utils/libft/ft_strchr.c  Utils/libft/ft_strlcpy.c Utils/libft/ft_strrchr.c Utils/libft/ft_toupper.c \
