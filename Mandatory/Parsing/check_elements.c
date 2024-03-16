@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:10:12 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 18:39:59 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/15 23:32:55 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	save_textures(char **split_line, t_cub_pars *cub)
 
 	path = split_line[1];
 	if (fill_textures(split_line, cub, path) == 1)
-		ft_putendl_free("Invalid Elements", 2, path);
+		ft_putendl_free("Invalid Elements--", 2, path);
 	if (check_xpm(path) == 1)
-		ft_putendl_free("Invalid Elements", 2, path);
+		ft_putendl_free("Invalid Elements++", 2, path);
 	// free(path);
 }
 
@@ -63,38 +63,32 @@ void	save_cardinal_direction(t_cub_pars *cub, char *line)
 
 	trim_line = ft_strtrim(line, " ");
 	split_line = ft_split(trim_line, ' ');
+	save_textures(split_line, cub);
 	free(trim_line);
-	if (ft_file_len(split_line) == 2)
-	{
-		save_textures(split_line, cub);
-		clean_map(split_line);
-	}
-	else
-	{
-		clean_map(split_line);
-		ft_putendl_fd("Invalid Elements", 2);
-	}
 }
 
 int	is_cardinal_direction(char *line)
 {
 	char	*trim_line;
 	char	**split_line;
+	int		len;
 
 	trim_line = ft_strtrim(line, " ");
 	split_line = ft_split(trim_line, ' ');
-	free(trim_line);
-	if (!(ft_strlen(split_line[0]) == 2 && 
-		((split_line[0][0] == 'N' && split_line[0][1] == 'O'
-		 && split_line[0][2] == '\0') || (split_line[0][0] == 'S'
-		 && split_line[0][1] == 'O' && split_line[0][2] == '\0')
-		|| (split_line[0][0] == 'W' && split_line[0][1] == 'E'
-		&& split_line[0][2] == '\0') || (split_line[0][0] == 'E'
-		&& split_line[0][1] == 'A' && split_line[0][2] == '\0'))))
+	len = ft_file_len(split_line);
+
+	if (len == 2
+		&& ft_strlen(split_line[0]) == 2
+		&& ((split_line[0][0] == 'N' && split_line[0][1] == 'O') ||
+			(split_line[0][0] == 'S' && split_line[0][1] == 'O') ||
+			(split_line[0][0] == 'W' && split_line[0][1] == 'E') ||
+			(split_line[0][0] == 'E' && split_line[0][1] == 'A')))
 	{
 		clean_map(split_line);
-		return (1);
+		free(trim_line);
+		return (0);
 	}
 	clean_map(split_line);
-	return (0);
+	free(trim_line);
+	return (1);
 }

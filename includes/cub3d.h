@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 13:10:00 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 16:04:42 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 03:02:28 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,14 +250,14 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 void	ft_initialize(t_cub_pars *cub_pars);
 void	clean_map(char **file_split);
 void	parsing(t_cub_pars *cub, char **av);
-void	check_file_extention(char *file_name);
+int		check_file_extention(char *file_name);
 int		is_cardinal_direction(char *line);
 void	parse(t_cub_pars *cub);
 int		ft_file_len(char **file_splite);
 void	save_cardinal_direction(t_cub_pars *cub, char *line);
 void	save_rgb(t_cub_pars *cub, char *line);
-void	is_map(char *line);
-void	is_graphics(t_cub_pars cub);
+int		is_map(char *line);
+int		is_graphics(t_cub_pars cub);
 void	check_newline(char *map);
 void	check_map(t_cub_pars *cub);
 void	is_surrounded(t_cub_pars *cub);

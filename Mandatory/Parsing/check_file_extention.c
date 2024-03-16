@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_file_extention.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamsyah <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 16:28:24 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 02:11:12 by bamsyah          ###   ########.fr       */
+/*   Updated: 2024/03/15 22:47:14 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_file_len(char **file_splite)
 	return (i);
 }
 
-void	check_file_extention(char *file_name)
+int	check_file_extention(char *file_name)
 {
     char	**file_split;
 	int		len;
@@ -32,7 +32,7 @@ void	check_file_extention(char *file_name)
 	if (ft_strncmp(file_split[len - 1], "cub", 3) != 0)
 	{
 		clean_map(file_split);
-		ft_putendl_fd("Invalid File", 2);
+		return (1);
 	}
-	clean_map(file_split);
+	return (0);
 }

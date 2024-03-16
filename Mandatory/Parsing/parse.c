@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 02:38:54 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 18:36:46 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 03:18:21 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,30 @@ void	save_map(t_cub_pars *cub, char *line)
 	check_newline(cub->map);
 }
 
-void	parse_elements(t_cub_pars *cub, char *line)
+int	parse_elements(t_cub_pars *cub, char *line)
 {
-	if (is_cardinal_direction(line) == 1)
-		ft_putendl_fd("Invalid Elements --", 2);
-	save_cardinal_direction(cub, line);
-	if (line[0] == 'F' || line[0] == 'C')
-		save_rgb(cub, line);
-	else
+	char	*trim_line;
+	char	**split_line;
+
+	trim_line = ft_strtrim(line, " \t\n");
+	split_line = ft_split(trim_line, ' ');
+	if (!is_cardinal_direction(line))
+		return (save_cardinal_direction(cub, line), 0);
+	else if ((split_line[0][0] == 'F' || split_line[0][0] == 'C'))
+		return (save_rgb(cub, line), 0);
+	else if (!is_map(trim_line) && !is_graphics(*cub))
 	{
-		is_map(line);
-		is_graphics(*cub);
-		save_map(cub, line);
+		cub->map = ft_strjoin(cub->map, line);
+		return (0);
 	}
+	return (1);
 }
 
 void	parse(t_cub_pars *cub)
 {
 	char	*line;
 
+	cub->map = ft_strdup("");
 	while (1)
 	{
 		line = get_next_line(cub->fd);
@@ -65,7 +70,9 @@ void	parse(t_cub_pars *cub)
 			free(line);
 			continue;
 		}
-		parse_elements(cub, line);
+		if (parse_elements(cub, line))
+			ft_putendl_fd("Invalide Map", 2);
 		free(line);
 	}
+		check_map(cub);
 }

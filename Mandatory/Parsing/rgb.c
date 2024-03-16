@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 04:47:22 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 18:30:27 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 01:41:30 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ void	rgb_valid(char **rgb)
 		path = ft_strtrim(rgb[i], " ");
 		while (path[++j])
 			if (!ft_isdigit(path[j]) && path[j] != '\n')
-				ft_putendl_free("Invalid rgb", 2, path);
+				ft_putendl_free("Invalid rgb color", 2, path);
 		color = ft_atoi(path);
 		if (color < 0 || color > 255)
-			ft_putendl_free("Invalid rgb", 2, path);
+			ft_putendl_free("Invalid rgb color", 2, path);
 		free(path);
 	}
 }
@@ -76,38 +76,36 @@ void	fill_rgbs(t_cub_pars *cub, char **rgb, char id)
 
 int	comma(char *line)
 {
-	int	i;
-	int	comma;
+	char	**split;
+	char	*rgbs;
+	int		c_count;
+	int		i;
 
+	split = ft_split(line, ' ');
+	rgbs = ft_strtrim(split[1], " ");
+	c_count = 0;
 	i = 0;
-	comma = 0;
-	while (line[i])
+	while (rgbs[i])
 	{
-		if (line[i] == ',')
-			comma++;
+		if (rgbs[i] == ',')
+			c_count++;
+		if ((rgbs[i] == ',' && rgbs[i + 1] == ',') || c_count > 2)
+			return (clean_map(split), free(rgbs), 1);
 		i++;
 	}
-	if (comma != 2)
-		return 1;
-	return 0;
+	return (clean_map(split), free(rgbs), 0);
 }
 
 void	save_rgb(t_cub_pars *cub, char *line)
 {
-	char	**rgb;
-	char	*path;
+	(void)cub;
+	char	*hex;
+	char	**rgbs;
 
-	path = ft_strtrim(line, " ");
-	if (comma(path) == 1)
-		ft_putendl_free("Invalid Elements", 2, path);
-	rgb = ft_split(path, ',');
-	if (line[0] == 'F')
-		fill_rgbs(cub, rgb, 'F');
-	else if (line[0] == 'C')
-		fill_rgbs(cub, rgb, 'C');
-	else
-	{
-		clean_map(rgb);
-		ft_putendl_free("Invalid Elements", 2, path);
-	}
+	hex = ft_strtrim(line, " ");
+	if (comma(hex))
+		ft_putendl_free("Invalid Color", 2, hex);
+	rgbs = ft_split(hex, ' ');
+	rgbs = ft_split(rgbs[1], ',');
+	fill_rgbs(cub, rgbs, hex[0]);
 }

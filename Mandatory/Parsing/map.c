@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:15:13 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 16:39:56 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 03:58:00 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	has_map_conflicts(char **map)
 	i = -1;
 	while (map[++i])
 	{
+		printf("%s\n", map[i]);
 		j = -1;
 		while (map[i][++j])
 		{
@@ -29,12 +30,11 @@ void	has_map_conflicts(char **map)
 					|| (map[i][j - 1] && map[i][j - 1] == '$')
 					|| (map[i][j + 1] && map[i][j + 1] == '$')
 					|| (map[i + 1][j] && map[i + 1][j] == '$'))
-					ft_putendl_fd("Error Map Conflict", 2);
+					ft_putendl_fd("Error Invalid Map---", 2);
 			}
 		}
 	}
 }
-
 
 void	check_newline(char *map)
 {
@@ -46,19 +46,24 @@ void	check_newline(char *map)
 			ft_putendl_fd("Error Invalid Map", 2);
 }
 
-void	is_map(char *line)
+int	is_map(char *line)
 {
 	int	i;
 
 	i = -1;
 	while (line[++i])
-		if (!(line[i] == '1' || line[i] == '0'))
-			ft_putendl_fd("Error Invalid Map", 2);
+		if (!(line[i] == '1' || line[i] == '0'
+			|| line[i] == 'N' || line[i] == 'S'
+			|| line[i] == 'W' || line[i] == 'E'
+			|| line[i] == ' '))
+			return (1);
+	return (0);
 }
 
 void	check_map(t_cub_pars *cub)
 {
 	cub->map2d = ft_split(cub->map, '\n');
+
 	cub->map_init.x = ft_strlen(cub->map2d[0]);
 	cub->map_init.y = ft_file_len(cub->map2d);
 	is_surrounded(cub);
