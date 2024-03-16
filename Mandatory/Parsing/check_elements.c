@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:10:12 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 04:39:03 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 09:56:29 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	save_textures(char **split_line, t_cub_pars *cub)
 		ft_putendl_free("Invalid Elements--", 2, path);
 	if (check_xpm(path) == 1)
 		ft_putendl_free("Invalid Elements++", 2, path);
-	// free(path);
 }
 
 void	save_cardinal_direction(t_cub_pars *cub, char *line)
@@ -64,6 +63,7 @@ void	save_cardinal_direction(t_cub_pars *cub, char *line)
 	trim_line = ft_strtrim(line, " ");
 	split_line = ft_split(trim_line, ' ');
 	save_textures(split_line, cub);
+	clean_map(split_line);
 	free(trim_line);
 }
 

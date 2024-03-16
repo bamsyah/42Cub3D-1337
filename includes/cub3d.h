@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 13:10:00 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 04:36:18 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 10:23:25 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,7 +235,7 @@ int				ft_atoi(const char *str);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoin(char *s1, char *s2);
 char			*ft_itoa(int n);
 void			ft_putchar_fd(char c, int fd);
 void			ft_putstr_fd(char *s, int fd);
@@ -267,7 +267,6 @@ void			player_surrounded(t_cub_pars *cub);
 void			*ft_calloc_char(size_t count, size_t size, char c);
 void			rect_map(t_cub_pars *cub);
 void			get_p_position(t_cub_pars *cub);
-void			check_newline(char *map);
 /* ---------------------------------------------------------------------------*
 							FUNCTIONS RYCASTING
  --------------------------------------------------------------------------- */

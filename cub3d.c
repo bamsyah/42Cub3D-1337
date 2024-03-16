@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 00:23:05 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/15 16:31:01 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 10:42:42 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ int	main(int ac, char **av)
 	{
 		ft_initialize(&mlx.cub3d);
 		parsing(&mlx.cub3d, av);
-		printf("Parsing\n");
 		gameloop(&mlx);
+		cleanup(&mlx);
+		close(mlx.cub3d.fd);
+		return (0);
 	}
 	else
 		ft_putendl_fd("Error Invalid Input", 2);

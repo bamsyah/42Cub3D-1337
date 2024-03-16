@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 02:38:54 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 04:41:57 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 10:37:32 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,23 @@ int	parse_elements(t_cub_pars *cub, char *line)
 {
 	char	*trim_line;
 	char	**split_line;
+	char	*tmp;
 
 	trim_line = ft_strtrim(line, " \t\n");
 	split_line = ft_split(trim_line, ' ');
 	if (!is_cardinal_direction(line))
-		return (save_cardinal_direction(cub, line), 0);
+		return (save_cardinal_direction(cub, line),
+			free(trim_line), clean_map(split_line), 0);
 	else if ((split_line[0][0] == 'F' || split_line[0][0] == 'C'))
-		return (save_rgb(cub, line), 0);
+		return (save_rgb(cub, line),
+			free(trim_line), clean_map(split_line), 0);
 	else if (!is_map(trim_line) && !is_graphics(*cub))
 	{
-		cub->map = ft_strjoin(cub->map, line);
-		return (0);
+		tmp = ft_strdup(line);
+		cub->map = ft_strjoin(cub->map, tmp);
+		return (free(trim_line), clean_map(split_line), 0);
 	}
-	return (1);
+	return (free(trim_line), clean_map(split_line), 1);
 }
 
 void	parse(t_cub_pars *cub)

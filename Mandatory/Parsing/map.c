@@ -6,7 +6,7 @@
 /*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 06:15:13 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 04:38:24 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 05:56:59 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	has_map_conflicts(char **map)
 	i = -1;
 	while (map[++i])
 	{
-		printf("%s\n", map[i]);
 		j = -1;
 		while (map[i][++j])
 		{
