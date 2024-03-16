@@ -1,11 +1,11 @@
 
 NO ./Textures/wood0.xpm
-SO ./Textures/wood0.xpm
-EA ./Textures/wood0.xpm
-WE ./Textures/wood0.xpm
+SO ./Textures/wood1.xpm
+EA ./Textures/wood2.xpm
+WE ./Textures/wood3.xpm
 
-C 225,   30,   0
-F 220    ,100,       0
+C 0,255,255
+F 0,150,0
 
 
 1111111111111111111111111
