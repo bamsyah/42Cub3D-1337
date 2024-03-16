@@ -6,7 +6,7 @@
 /*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 00:23:05 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 17:32:15 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:42:17 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	gameloop(t_mlx *mlx)
 	mlx_hook(mlx->mlx_win, 2, 0, key_press, mlx);
 	mlx_hook(mlx->mlx_win, 3, 0, key_release, mlx);
 	mlx_hook(mlx->mlx_win, 17, 0, close_window, mlx);
-	mlx_loop_hook(mlx->mlx_ptr, game, mlx);
+	mlx_loop_hook(mlx->mlx_ptr, move_player, mlx);
 	mlx_loop(mlx->mlx_ptr);
 }
 

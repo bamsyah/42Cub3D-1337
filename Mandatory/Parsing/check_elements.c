@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 03:10:12 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 09:56:29 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 18:17:25 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	check_xpm(char *path)
 
 int	fill_textures(char **split_line, t_cub_pars *cub, char *path)
 {
+	int	status;
+
+	status = 0;
 	if (split_line[1][0] == '.' && split_line[1][1] == '/')
 	{
 		if (split_line[0][0] == 'N' && split_line[0][1] == 'O'
@@ -38,10 +41,12 @@ int	fill_textures(char **split_line, t_cub_pars *cub, char *path)
 		else if (split_line[0][0] == 'E' && split_line[0][1] == 'A'
 		&& cub->directions.east == NULL)
 			cub->directions.east = ft_strtrim(path, "\n");
-		return (0);
+		else
+			status = 1;
 	}
 	else
-		return (1);
+		status = 1;
+	return (status);
 }
 
 void	save_textures(char **split_line, t_cub_pars *cub)
@@ -50,9 +55,9 @@ void	save_textures(char **split_line, t_cub_pars *cub)
 
 	path = split_line[1];
 	if (fill_textures(split_line, cub, path) == 1)
-		ft_putendl_free("Invalid Elements--", 2, path);
+		ft_putendl_free("Invalid Elements", 2, path);
 	if (check_xpm(path) == 1)
-		ft_putendl_free("Invalid Elements++", 2, path);
+		ft_putendl_free("Invalid Elements", 2, path);
 }
 
 void	save_cardinal_direction(t_cub_pars *cub, char *line)

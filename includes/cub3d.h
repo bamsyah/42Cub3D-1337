@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 13:10:00 by bamsyah           #+#    #+#             */
-/*   Updated: 2024/03/16 10:23:25 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:56:48 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@
 # define VIEW_RIGHT 124
 # define VIEW_LEFT 123
 
-# define FA 60
+# define FOV 60
 # define WALL_STRIP_WIDTH 1
 
 # define NO 4.72
@@ -277,15 +277,15 @@ int				mouse(int x, int y, t_mlx *ml);
 int				check_wall_2(t_mlx *mlx, float x, float y);
 void			render(t_mlx *mlx);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
-int				game(t_mlx *mlx);
+int				move_player(t_mlx *mlx);
 int				close_window(t_mlx *mlx);
 void			move_down_up(t_mlx *mlx);
 void			move_left_right(t_mlx *mlx);
 int				check_wall(t_mlx *mlx, float x, float y);
 int				is_player(char c);
 void			look_left_right(t_mlx *mlx);
-void			ray(t_mlx *mlx);
-void			cast_ray(double ray_angle, t_mlx *mlx);
+void			cast_rays(t_mlx *mlx);
+void			cast(double ray_angle, t_mlx *mlx);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 // +line
 void			render3dwalls(t_mlx *mlx, int nb);

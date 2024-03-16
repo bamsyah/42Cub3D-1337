@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   casting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:26:07 by bkaztaou          #+#    #+#             */
-/*   Updated: 2024/03/15 15:26:38 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:57:07 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	cast_ray(double ray_angle, t_mlx *mlx)
+void	cast(double ray_angle, t_mlx *mlx)
 {
 	double	player_x;
 	double	player_y;
@@ -40,19 +40,19 @@ void	cast_ray(double ray_angle, t_mlx *mlx)
 	}
 }
 
-void	ray(t_mlx *mlx)
+void	cast_rays(t_mlx *mlx)
 {
 	double	ray_angle;
 	double	ray_increment;
 	int		i;
 
-	ray_angle = mlx->cub3d.player.rotation_angle - ((FA * (M_PI / 180)) / 2);
+	ray_angle = mlx->cub3d.player.rotation_angle - ((FOV * (M_PI / 180)) / 2);
 	mlx->rayangle = ray_angle;
-	ray_increment = (FA * (M_PI / 180)) / MAP_W;
+	ray_increment = (FOV * (M_PI / 180)) / MAP_W;
 	i = 0;
 	while (i < MAP_W)
 	{
-		cast_ray(ray_angle, mlx);
+		cast(ray_angle, mlx);
 		if (roundf(fmod(mlx->ray_x, 64)) == 0)
 		{
 			mlx->is_horizontal = 1;

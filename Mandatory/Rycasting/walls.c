@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkaztaou <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bkaztaou <bkaztaou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 15:30:24 by bkaztaou          #+#    #+#             */
-/*   Updated: 2024/03/16 04:41:23 by bkaztaou         ###   ########.fr       */
+/*   Updated: 2024/03/16 17:57:21 by bkaztaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	help_wall(t_mlx *mlx)
 {
 	mlx->wall.ray_distance = mlx->distance * cos(mlx->rayangle
 			- mlx->cub3d.player.rotation_angle);
-	mlx->wall.distance_pjplane = (MAP_W / 2) / tan((FA * (M_PI / 180)) / 2);
+	mlx->wall.distance_pjplane = (MAP_W / 2) / tan((FOV * (M_PI / 180)) / 2);
 	mlx->wall.wall_strip_height = (TILE_SIZE / mlx->wall.ray_distance)
 		* mlx->wall.distance_pjplane;
 	mlx->wall.walltp = (MAP_H / 2) - (mlx->wall.wall_strip_height / 2);
